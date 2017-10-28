@@ -5,13 +5,19 @@ import {Home} from "./components/Home";
  
 class App extends React.Component{
     render(){
+        let user ={
+            name:"potter",
+            hobbies:["shopping","surfing internet"]
+        }
         return (
             <div className="container">
                 <div className="row">
                 <Header/>
                 </div>
                 <div className="row">
-                <Home/>
+                <Home name={"Harry"} age={26} user={user}>
+                    <p>This is child of home component</p>
+                </Home>
                 </div>
             </div>
         );
