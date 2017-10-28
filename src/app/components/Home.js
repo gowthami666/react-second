@@ -2,19 +2,26 @@ import React from "react";
 import propTypes from "prop-types";
 
 export class Home extends React.Component{
+    constructor(props)
+    {
+        super();
+        this.state={
+            age:props.age
+        }
+    }
+        incrementAge()
+        {
+            this.setState({
+                age: this.state.age+3
+            })
+        }
+    
     render(){
         return(
             <div className="container">
                 <p>Name is:{this.props.name}</p>
-                <p>Age is:{this.props.age}</p>
-                <p>Object name is:{this.props.user.name}</p>
-                <div>
-                    <h4>Hobbies</h4>
-                    <ul>
-                        {this.props.user.hobbies.map((hobby,i)=> <li key={i}>{hobby}</li>)}
-                    </ul>
-                </div>
-                {this.props.children}
+                <p>Age is:{this.state.age}</p>
+                <button className="btn btn-primary" onClick={()=>this.incrementAge()}>Increase age</button>
             </div>
 
         )
@@ -23,7 +30,5 @@ export class Home extends React.Component{
 
 Home.propTypes ={
     name: propTypes.string,
-    age:propTypes.number,
-    user:propTypes.object,
-    children:propTypes.element.isRequired
+    age:propTypes.number
 }
